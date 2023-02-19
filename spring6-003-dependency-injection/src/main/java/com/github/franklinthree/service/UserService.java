@@ -3,6 +3,13 @@ package com.github.franklinthree.service;
 import com.github.franklinthree.dao.UserDao;
 import com.github.franklinthree.dao.VipDao;
 
+
+/**
+ * 用户服务
+ *
+ * @author FranklinThree
+ * @date 2023/02/19
+ */
 public class UserService {
     private UserDao userDao;
     private VipDao vipDao;
