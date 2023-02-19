@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="orderDaoBean" class="com.github.franklinthree.dao.OrderDao"/>
+    <bean id="orderServiceBean" class="com.github.franklinthree.service.OrderService">
+<!--        注入外部Bean-->
+        <property name="orderDao" ref="orderDaoBean"/>
+<!--        <property name=""/>-->
+    </bean>
+    <bean id="orderServiceBean2" class="com.github.franklinthree.service.OrderService">
+        <property name="orderDao">
+<!--            在property标签中使用嵌套的bean标签，这就是内部Bean-->
+            <bean class="com.github.franklinthree.dao.OrderDao"/>
+        </property>
+    </bean>
+</beans>

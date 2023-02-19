@@ -1,12 +1,22 @@
 package com.github.franklinthree.spring6.test;
 
 import com.github.franklinthree.service.CustomerService;
+import com.github.franklinthree.service.OrderService;
 import com.github.franklinthree.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testSetDI2(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
+        OrderService orderService = applicationContext.getBean("orderServiceBean", OrderService.class);
+        orderService.generate();
+
+        OrderService orderService2 = applicationContext.getBean("orderServiceBean2", OrderService.class);
+        orderService2.generate();
+    }
     @Test
     public void testConstructorDI(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
