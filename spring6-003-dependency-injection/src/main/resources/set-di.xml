@@ -14,4 +14,10 @@
             <bean class="com.github.franklinthree.dao.OrderDao"/>
         </property>
     </bean>
+    <bean id="userBean" class="com.github.franklinthree.bean.User">
+<!--        重点：如果是给简单类型赋值，就不能用ref了，就需要使用value了-->
+        <property name="username" value="张三"/>
+        <property name="password" value="123"/>
+        <property name="age" value="20"/>
+    </bean>
 </beans>

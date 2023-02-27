@@ -1,5 +1,6 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.bean.User;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
 import com.github.franklinthree.service.UserService;
@@ -8,6 +9,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testSimpleTypeSet(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
+        User user = applicationContext.getBean("userBean",User.class);
+        System.out.println(user);
+    }
     @Test
     public void testSetDI2(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
