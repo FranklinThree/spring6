@@ -20,4 +20,16 @@
         <property name="password" value="123"/>
         <property name="age" value="20"/>
     </bean>
+    <bean id="svt" class="com.github.franklinthree.bean.SimpleValueType">
+        <property name="age" value="20"/>
+        <property name="age2" value="30"/>
+        <property name="username" value="zhangsan"/>
+        <property name="season" value="SPRING"/>
+        <property name="flag" value="false"/>
+        <property name="flag2" value="true"/>
+        <property name="c" value="男"/>
+        <property name="c2" value="女"/>
+        <property name="clazz" value="java.lang.String"/>
+
+    </bean>
 </beans>

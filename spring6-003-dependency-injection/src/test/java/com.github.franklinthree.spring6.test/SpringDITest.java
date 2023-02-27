@@ -1,5 +1,6 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.bean.SimpleValueType;
 import com.github.franklinthree.bean.User;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
@@ -9,6 +10,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testSimpleTypeSet2(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
+        SimpleValueType svt = applicationContext.getBean("svt", SimpleValueType.class);
+        System.out.println(svt);
+
+    }
     @Test
     public void testSimpleTypeSet(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
