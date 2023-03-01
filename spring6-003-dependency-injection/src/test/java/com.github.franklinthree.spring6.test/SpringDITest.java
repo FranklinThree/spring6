@@ -2,6 +2,7 @@ package com.github.franklinthree.spring6.test;
 
 import com.github.franklinthree.bean.SimpleValueType;
 import com.github.franklinthree.bean.User;
+import com.github.franklinthree.jdbc.MyDataSource;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
 import com.github.franklinthree.service.UserService;
@@ -10,7 +11,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
-
+    @Test
+    public void testMyDataSource(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
+        MyDataSource myDataSource = applicationContext.getBean("myDataSource", MyDataSource.class);
+        System.out.println(myDataSource);
+    }
     @Test
     public void testSimpleTypeSet2(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");

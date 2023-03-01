@@ -36,4 +36,12 @@
         <property name="birth" value="Wed Mar 01 23:11:59 CST 2023"/>
 
     </bean>
+
+<!--    让spring来管理我们的数据源-->
+    <bean id="myDataSource" class="com.github.franklinthree.jdbc.MyDataSource">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://m1.franklin3.top:3306/spring6"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
 </beans>
