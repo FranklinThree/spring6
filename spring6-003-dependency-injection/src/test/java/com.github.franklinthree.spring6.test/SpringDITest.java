@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+
     @Test
     public void testSimpleTypeSet2(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");

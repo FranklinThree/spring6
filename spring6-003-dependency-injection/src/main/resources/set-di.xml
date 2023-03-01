@@ -30,6 +30,10 @@
         <property name="c" value="男"/>
         <property name="c2" value="女"/>
         <property name="clazz" value="java.lang.String"/>
+<!--        报错了，说"1970-10-11"这个字符串无法转换成java.util.Date类型。-->
+<!--        只有以下格式的字符串能够被转化为Date类型-->
+<!--        在实际开发中，我们一般不会把Date当做简单类型，虽然它是简单类型，一般会采用ref给Date类型的属性赋值-->
+        <property name="birth" value="Wed Mar 01 23:11:59 CST 2023"/>
 
     </bean>
 </beans>

@@ -18,6 +18,9 @@ import java.util.Locale;
  * @since 1.0.0
  */
 public class SimpleValueType {
+    public static void main(String[] args) {
+        System.out.println(new Date());
+    }
     public static boolean isSimpleValueType(Class<?> type) {
         return Void.class != type && Void.TYPE != type && (
                 ClassUtils.isPrimitiveOrWrapper(type) ||
@@ -45,6 +48,8 @@ public class SimpleValueType {
     private String username;
 
     private Class clazz;
+
+    private Date birth;
 
     public int getAge() {
         return age;
@@ -118,6 +123,11 @@ public class SimpleValueType {
         this.clazz = clazz;
     }
 
+    /**
+     * 字符串
+     *
+     * @return {@link String }
+     */
     @Override
     public String toString() {
         return "SimpleValueType{" +
@@ -130,6 +140,15 @@ public class SimpleValueType {
                 ",\n\t" + "season=" + season +
                 ",\n\t" + "username='" + username + '\'' +
                 ",\n\t" + "clazz=" + clazz +
+                ",\n\t" + "birth=" + birth +
                 '\n' + '}';
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 }
