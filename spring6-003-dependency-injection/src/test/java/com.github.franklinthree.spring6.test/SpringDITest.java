@@ -1,6 +1,8 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.bean.Clazz;
 import com.github.franklinthree.bean.SimpleValueType;
+import com.github.franklinthree.bean.Student;
 import com.github.franklinthree.bean.User;
 import com.github.franklinthree.jdbc.MyDataSource;
 import com.github.franklinthree.service.CustomerService;
@@ -11,6 +13,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testCascade(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("cascade.xml");
+        Student studentBean = applicationContext.getBean("studentBean", Student.class);
+        Clazz clazzBean = applicationContext.getBean("clazzBean", Clazz.class);
+        System.out.println(studentBean);
+        System.out.println(clazzBean);
+    }
     @Test
     public void testMyDataSource(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
