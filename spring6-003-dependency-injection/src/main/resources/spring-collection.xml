@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="personBean" class="com.github.franklinthree.bean.Person">
         <property name="names">
+<!--            List集合有序可重复-->
             <list>
                 <value>Player_1</value>
                 <value>Player_2</value>
@@ -15,6 +16,7 @@
             </list>
         </property>
         <property name="addrs">
+<!--            Set集合无须不可重复-->
             <set>
                 <value>杭州钱塘区</value>
                 <value>杭州江干区</value>
@@ -23,6 +25,26 @@
                 <value>杭州西湖区</value>
                 <value>杭州滨江区</value>
             </set>
+        </property>
+        <property name="phones">
+<!--            注入Map集合-->
+            <map>
+<!--                如果key和value不是简单类型就用这个配置-->
+<!--                <entry key-ref="" value-ref=""/>-->
+<!--                如果是简单类型就是key和value-->
+                <entry key="1" value="110"/>
+                <entry key="2" value="119"/>
+                <entry key="3" value="120"/>
+            </map>
+        </property>
+        <property name="properties">
+<!--            注入Properties属性类对象-->
+            <props>
+                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/spring6</prop>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+            </props>
         </property>
     </bean>
 </beans>
