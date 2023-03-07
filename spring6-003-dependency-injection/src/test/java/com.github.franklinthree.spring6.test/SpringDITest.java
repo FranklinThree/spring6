@@ -1,9 +1,6 @@
 package com.github.franklinthree.spring6.test;
 
-import com.github.franklinthree.bean.Clazz;
-import com.github.franklinthree.bean.SimpleValueType;
-import com.github.franklinthree.bean.Student;
-import com.github.franklinthree.bean.User;
+import com.github.franklinthree.bean.*;
 import com.github.franklinthree.jdbc.MyDataSource;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
@@ -13,6 +10,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testArray(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-array.xml");
+        QianDaYe yuQian = applicationContext.getBean("yuQian", QianDaYe.class);
+        System.out.println(yuQian);
+
+    }
     @Test
     public void testCascade(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("cascade.xml");
