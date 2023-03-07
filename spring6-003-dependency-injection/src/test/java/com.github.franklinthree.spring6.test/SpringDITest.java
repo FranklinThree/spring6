@@ -11,6 +11,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
     @Test
+    public void testCollection(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-collection.xml");
+        Person personBean = applicationContext.getBean("personBean", Person.class);
+        System.out.println(personBean);
+    }
+    @Test
     public void testArray(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-array.xml");
         QianDaYe yuQian = applicationContext.getBean("yuQian", QianDaYe.class);

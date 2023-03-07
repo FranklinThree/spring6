@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="personBean" class="com.github.franklinthree.bean.Person">
+        <property name="names">
+            <list>
+                <value>Player_1</value>
+                <value>Player_2</value>
+                <value>Player_3</value>
+                <value>Player_4</value>
+                <value>Player_5</value>
+                <value>Player_6</value>
+                <value>Player_999</value>
+            </list>
+        </property>
+        <property name="addrs">
+            <set>
+                <value>杭州钱塘区</value>
+                <value>杭州江干区</value>
+                <value>杭州余杭区</value>
+                <value>杭州拱墅区</value>
+                <value>杭州西湖区</value>
+                <value>杭州滨江区</value>
+            </set>
+        </property>
+    </bean>
+</beans>
