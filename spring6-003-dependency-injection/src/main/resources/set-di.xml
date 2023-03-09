@@ -44,4 +44,23 @@
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
     </bean>
+    <bean id="catBean" class="com.github.franklinthree.bean.Cat">
+<!--        不给属性注入，属性的默认值就是null-->
+<!--        <property name="name" value="tom"/>-->
+<!--        这不是注入null，这只是注入了一个"null"字符串-->
+<!--        <property name="name" value="null"/>-->
+<!--        这种方式是手动注入null-->
+<!--        <property name="name" >-->
+<!--            <null/>-->
+<!--        </property>-->
+<!--        注入空字符串第一种方式-->
+<!--        <property name="name" value=""/>-->
+<!--        注入空字符串第二种方式-->
+        <property name="name">
+            <value/>
+        </property>
+
+
+        <property name="age" value="3"/>
+    </bean>
 </beans>
