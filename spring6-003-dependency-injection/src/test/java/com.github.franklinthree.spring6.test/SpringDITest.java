@@ -1,6 +1,7 @@
 package com.github.franklinthree.spring6.test;
 
 import com.github.franklinthree.bean.*;
+import com.github.franklinthree.bean.Math;
 import com.github.franklinthree.jdbc.MyDataSource;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
@@ -10,6 +11,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+    @Test
+    public void testSpecial(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
+        Math mathBean = applicationContext.getBean("mathBean", Math.class);
+        System.out.println(mathBean);
+
+
+    }
     @Test
     public void testNull(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("set-di.xml");
