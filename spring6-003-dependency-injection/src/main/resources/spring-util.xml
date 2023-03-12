@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--    引入util命名空间
+        在spring的配置文件头部添加：
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="...
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+-->
+<!--    util主要针对集合Collection-->
+    <util:properties id="prop">
+        <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+        <prop key="url">jdbc:mysql://franklin3.top:3306/spring6</prop>
+        <prop key="username">root</prop>
+        <prop key="password">123456</prop>
+    </util:properties>
+<!--    数据库1-->
+    <bean id="ds1" class="com.github.franklinthree.jdbc.MyDataSource1">
+        <property name="properties" ref="prop">
+
+        </property>
+    </bean>
+<!--    数据库2-->
+    <bean id="ds2" class="com.github.franklinthree.jdbc.MyDataSource2">
+        <property name="properties" ref="prop">
+
+        </property>
+    </bean>
+</beans>

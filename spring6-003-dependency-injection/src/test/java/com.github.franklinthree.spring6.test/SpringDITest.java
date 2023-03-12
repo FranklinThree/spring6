@@ -3,6 +3,8 @@ package com.github.franklinthree.spring6.test;
 import com.github.franklinthree.bean.*;
 import com.github.franklinthree.bean.Math;
 import com.github.franklinthree.jdbc.MyDataSource;
+import com.github.franklinthree.jdbc.MyDataSource1;
+import com.github.franklinthree.jdbc.MyDataSource2;
 import com.github.franklinthree.service.CustomerService;
 import com.github.franklinthree.service.OrderService;
 import com.github.franklinthree.service.UserService;
@@ -11,6 +13,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
+
+    @Test
+    public void testUtil(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-util.xml");
+        MyDataSource1 ds1 = applicationContext.getBean("ds1", MyDataSource1.class);
+        MyDataSource2 ds2 = applicationContext.getBean("ds2", MyDataSource2.class);
+        System.out.println(ds1);
+        System.out.println(ds2);
+    }
 
     @Test
     public void testC(){
