@@ -14,7 +14,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
     @Test
-    public void testAutowire(){
+    public void testAutowireByType(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autowire.xml");
+        CustomerService customerService = applicationContext.getBean("cs", CustomerService.class);
+        customerService.save();
+    }
+    @Test
+    public void testAutowireByName(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autowire.xml");
         OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
         orderService.generate();

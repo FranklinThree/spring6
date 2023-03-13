@@ -2,6 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    根据类型进行自动装配-->
+<!--    自动装配是基于set方法的-->
+<!--    根据类型进行自动装配的时候，在有效的配置文件当中，某种类型的示例只能有一个。-->
+    <bean class="com.github.franklinthree.dao.VipDao"></bean>
+    <bean class="com.github.franklinthree.dao.UserDao"></bean>
+    <bean id="cs" class="com.github.franklinthree.service.CustomerService" autowire="byType"></bean>
 
 <!--    根据名字进行自动装配-->
 <!--    注意：自动装配也是基于set方式实现的。-->
