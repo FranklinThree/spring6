@@ -20,7 +20,7 @@ public class OrderDao {
      * 添加订单
      */
     public void insert(){
-        logger.info("订单正在生成");
+        logger.info("订单正在生成...");
     }
 }
 

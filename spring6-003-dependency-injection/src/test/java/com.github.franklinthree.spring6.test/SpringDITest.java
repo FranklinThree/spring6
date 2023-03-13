@@ -13,7 +13,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDITest {
-
+    @Test
+    public void testAutowire(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autowire.xml");
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+        orderService.generate();
+    }
     @Test
     public void testUtil(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-util.xml");
