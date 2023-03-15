@@ -6,7 +6,11 @@
     目前来说：scope属性只有两个值：
         singleton：单例模式，spring容器中只有一个实例。
         prototype：原型模式，每次从spring容器中获取的时候，都会创建一个新的实例。
-
+    其实scope属性还有多个值：
+        例如：request、session、global-session等。
+        但是request、session、global-session要求项目必须是一个web项目。当你引入springmvc的时候，就可以使用这些值了。
+        request：每次请求中只有一个实例。
+        session：每次会话中只有一个实例。
 -->
     <bean id="sb" class="com.github.franklinthree.bean.SpringBean" scope="prototype"></bean>
 </beans>

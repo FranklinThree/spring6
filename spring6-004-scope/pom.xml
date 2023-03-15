@@ -21,12 +21,12 @@
             <artifactId>spring-context</artifactId>
             <version>6.0.4</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
+<!--        引入web框架，例如springMVC-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-webmvc</artifactId>-->
+<!--            <version>6.0.4</version>-->
+<!--        </dependency>-->
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
