@@ -7,6 +7,31 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringBeanScopeTest {
     @Test
+    public void testThreadScope() {
+        /**
+         * 1. Spring容器中的Bean的作用域
+         *      当将bean的scope属性设置为thread时，Spring容器中的Bean是多例的（Prototype）
+         *      每一次调用getBean方法，实例化一个新的Bean
+         *      thread（线程）
+         */
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-scope.xml");
+        SpringBean sb = applicationContext.getBean("sb", SpringBean.class);
+        System.out.println(sb);
+        SpringBean sb1 = applicationContext.getBean("sb", SpringBean.class);
+        System.out.println(sb1);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SpringBean sb2 = applicationContext.getBean("sb", SpringBean.class);
+                System.out.println(sb2);
+                SpringBean sb3 = applicationContext.getBean("sb", SpringBean.class);
+                System.out.println(sb3);
+            }
+        }).start();
+
+    }
+
+        @Test
     public void testBeanScope(){
         /**
          * 1. Spring默认情况下是如何管理这个Bean的：

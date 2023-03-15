@@ -12,5 +12,15 @@
         request：每次请求中只有一个实例。
         session：每次会话中只有一个实例。
 -->
-    <bean id="sb" class="com.github.franklinthree.bean.SpringBean" scope="prototype"></bean>
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="threadScope">
+<!--                    这个scope接口的实现类使用的是Spring框架内置的，也可以自定义。-->
+                    <bean class="org.springframework.context.support.SimpleThreadScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="sb" class="com.github.franklinthree.bean.SpringBean" scope="threadScope"></bean>
 </beans>
