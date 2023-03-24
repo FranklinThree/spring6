@@ -6,4 +6,9 @@
     <bean id="sb" class="com.github.franklinthree.spring6.bean.SpringBean">
 
     </bean>
+<!--    Spring提供的实例化方式，第二种：通过简单工厂模式。你需要在Spring配置文件中告诉Spring框架，调用那个类的哪个方法获取Bean-->
+<!--    factory-method 属性指定的是工厂类当中的静态方法。也就是告诉Spring框架，调用这个方法可以获取Bean-->
+    <bean id="star" class="com.github.franklinthree.spring6.bean.StarFactory" factory-method="get">
+
+    </bean>
 </beans>
