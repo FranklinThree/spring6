@@ -2,6 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--     通过工厂Bean：DateFactoryBean 来返回普通Bean：java.util.Date-->
+    <bean id="date" class="com.github.franklinthree.spring6.bean.DateFactoryBean">
+        <constructor-arg name="dateStr" value="1980-10-11"/>
+    </bean>
+    <bean id="student" class="com.github.franklinthree.spring6.bean.Student">
+<!--        <property name="birth" value="Mon Jan 01 00:00:00 CST 2001"/>-->
+        <property name="birth" ref="date"/>
+    </bean>
 <!--    Spring提供的实例化方式，第一种：在spring配置文件中直接配置类路径，Spring会自动调用该类的无参数构造方法来实例化bean-->
     <bean id="sb" class="com.github.franklinthree.spring6.bean.SpringBean">
 

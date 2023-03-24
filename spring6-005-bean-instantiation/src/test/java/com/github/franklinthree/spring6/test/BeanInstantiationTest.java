@@ -1,15 +1,18 @@
 package com.github.franklinthree.spring6.test;
 
-import com.github.franklinthree.spring6.bean.Gun;
-import com.github.franklinthree.spring6.bean.Person;
-import com.github.franklinthree.spring6.bean.SpringBean;
-import com.github.franklinthree.spring6.bean.Star;
+import com.github.franklinthree.spring6.bean.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanInstantiationTest {
 
+	@Test
+	public void testDate() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+		Student student = applicationContext.getBean("student", Student.class);
+		System.out.println(student);
+	}
 	@Test
 	public void testInstantiation4() {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
