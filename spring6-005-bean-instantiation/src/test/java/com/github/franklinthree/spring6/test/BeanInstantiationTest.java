@@ -1,5 +1,6 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.spring6.bean.Gun;
 import com.github.franklinthree.spring6.bean.SpringBean;
 import com.github.franklinthree.spring6.bean.Star;
 import org.junit.Test;
@@ -7,6 +8,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanInstantiationTest {
+	@Test
+	public void testInstantiation3() {
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+		Gun gun = applicationContext.getBean("gun", Gun.class);
+		System.out.println(gun);
+	}
 	@Test
 	public void testInstantiation2() {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");

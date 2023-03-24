@@ -11,4 +11,13 @@
     <bean id="star" class="com.github.franklinthree.spring6.bean.StarFactory" factory-method="get">
 
     </bean>
+<!--    Spring提供的实例化方式，第三种：通过工厂方法模式。通过 factory-bean属性 + factory-method属性来共同完成。-->
+<!--    告诉Spring框架，调用哪个对象的哪个方法来获取Bean。-->
+    <bean id="gunFactory" class="com.github.franklinthree.spring6.bean.GunFactory">
+
+    </bean>
+<!--    以下的配置很关键，factory-bean属性告诉Spring调用哪个对象。factory-method告诉Spring调用该对象的哪个方法-->
+    <bean id="gun" factory-bean="gunFactory" factory-method="get">
+
+    </bean>
 </beans>
