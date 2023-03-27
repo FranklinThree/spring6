@@ -11,7 +11,7 @@
 <!--    </bean>-->
 <!--    需要手动指定初始化方法和销毁方法-->
     <bean id="user" class="com.github.franklinthree.spring6.bean.User"
-        init-method="initBean" destroy-method="destroyBean">
+        init-method="initBean" destroy-method="destroyBean" scope="prototype">
         <property name="name" value="zhang_san"/>
     </bean>
 

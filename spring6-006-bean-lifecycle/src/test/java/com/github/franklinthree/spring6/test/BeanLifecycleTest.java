@@ -7,6 +7,11 @@ import com.github.franklinthree.spring6.bean.User;
 
 public class BeanLifecycleTest {
 
+    /**
+     * 测试bean生命周期
+     * Spring容器只对singleton的Bean进行完整的生命周期管理
+     * 如果是prototype的Bean，Spring容器只会调用Bean的初始化完毕。等客户端程序一旦获取到该Bean实例之后，Spring容器就不会再管理该Bean的生命周期了。
+     */
     @Test
     public void testBeanLifecycleFive(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
