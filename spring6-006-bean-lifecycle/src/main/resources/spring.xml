@@ -6,12 +6,12 @@
 <!--    注意：这个Bean后处理器将作用于整个配置文件中所有的Bean。-->
     <bean class="com.github.franklinthree.spring6.bean.LogBeanPostProcessor"/>
 
-    <bean id="vip" class="com.github.franklinthree.spring6.bean.Vip">
+<!--    <bean id="vip" class="com.github.franklinthree.spring6.bean.Vip">-->
 
-    </bean>
+<!--    </bean>-->
 <!--    需要手动指定初始化方法和销毁方法-->
     <bean id="user" class="com.github.franklinthree.spring6.bean.User"
-        init-method="init" destroy-method="destroy">
+        init-method="initBean" destroy-method="destroyBean">
         <property name="name" value="zhang_san"/>
     </bean>
 

@@ -1,5 +1,8 @@
 package com.github.franklinthree.spring6.bean;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.*;
+
 /**
  * 用户
  * Bean的生命周期按照粗略的五步的话：
@@ -15,7 +18,7 @@ package com.github.franklinthree.spring6.bean;
  * @see
  * @since 1.0.0
  */
-public class User {
+public class User implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, InitializingBean, DisposableBean {
 
     private String name;
 
@@ -35,14 +38,40 @@ public class User {
     /**
      * 这个方法需要自己写，自己配。方法名随意
      */
-    public void init() {
-        System.out.println("第三步：初始化Bean。");
+    public void initBean() {
+        System.out.println("第四步：初始化Bean。");
     }
 
     /**
      * 这个方法需要自己写，自己配。方法名随意
      */
-    public void destroy() {
-        System.out.println("第五步：销毁Bean。");
+    public void destroyBean() {
+        System.out.println("第七步：销毁Bean。");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("Bean的名称是：" + name);
+    }
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        System.out.println("Bean的类加载器是：" + classLoader);
+    }
+
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        System.out.println("生产这个Bean的工厂对象时：" + beanFactory);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("InitializingBean的afterPropertiesSet方法执行。");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("DisposableBean的destroy方法执行。");
     }
 }

@@ -11,7 +11,7 @@ public class BeanLifecycleTest {
     public void testBeanLifecycleFive(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
         User user = applicationContext.getBean("user", User.class);
-        System.out.println("第四步：使用Bean："+user);
+        System.out.println("第六步：使用Bean："+user);
         // 注意：这里需要手动关闭容器，否则不会调用Bean的销毁方法。
         ClassPathXmlApplicationContext context = (ClassPathXmlApplicationContext) applicationContext;
         context.close();
