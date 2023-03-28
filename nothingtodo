@@ -2,3 +2,4 @@
 040-GoF23种设计模式概述
 047-BeanFactory和FactoryBean的区别
 055-Bean的循环依赖之解决循环依赖的本质
+056-Bean的循环依赖之多例和set模式下
