@@ -18,7 +18,7 @@
 <!--    在prototype + setter 模式下的循环依赖-->
 <!--    BeanCurrentlyInCreationException 当前Bean正在处于创建中异常-->
 <!--    注意：当两个bean的scope都是prototype的时候才会出现异常。如果任意一个是singleton的，就不会出现异常。-->
-    <bean id="husband" class="com.github.franklinthree.spring6.bean.Husband" scope="prototype">
+    <bean id="husband" class="com.github.franklinthree.spring6.bean.Husband" scope="singleton">
         <property name="name" value="zhangsan"/>
         <property name="wife" ref="wife"/>
     </bean>
