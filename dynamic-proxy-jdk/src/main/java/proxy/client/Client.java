@@ -39,8 +39,10 @@ public class Client {
         OrderService proxyOs = (OrderService)Proxy.newProxyInstance(orderService.getClass().getClassLoader(), orderService.getClass().getInterfaces(), new TimeInvocationHandler(orderService));
         // 代理对象调用方法
         // 注意：调用代理对象的代理方法的时候，如果你要做增强的话，目标对象的目标方法得保证执行。
-        proxyOs.detail();
-        proxyOs.modify();
-        proxyOs.generate();
+//        proxyOs.detail();
+//        proxyOs.modify();
+//        proxyOs.generate();
+        String name = proxyOs.getName();
+        System.out.println(name);
     }
 }

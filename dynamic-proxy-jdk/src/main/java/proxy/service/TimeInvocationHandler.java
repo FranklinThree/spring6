@@ -40,11 +40,14 @@ public class TimeInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 这个接口的目的就是为了让你有地方写增强代码的
-        System.out.println("增强1");
+        long begin = System.currentTimeMillis();
         // 调用目标对象上的目标方法
         // 方法四要素：对象，方法，参数，返回值
-        method.invoke(target, args);
-        System.out.println("增强2");
-        return null;
+        Object retValue = method.invoke(target, args);
+        long end = System.currentTimeMillis();
+        System.out.println("耗时：" + (end - begin) + "ms");
+
+        // 注意这个invoke方法的返回值，如果代理对象调用代理方法之后，需要返回结果的话，invoke方法必须将目标对象的目标方法的返回值返回回去。
+        return retValue;
     }
 }

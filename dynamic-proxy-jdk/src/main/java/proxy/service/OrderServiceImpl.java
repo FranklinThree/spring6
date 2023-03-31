@@ -13,6 +13,12 @@ package proxy.service;
 // 目标对象
 public class OrderServiceImpl implements OrderService {
 
+    @Override
+    public String getName() {
+        System.out.println("getName");
+        return "FranklinThree";
+    }
+
     // 目标方法
     @Override
     public void generate() {

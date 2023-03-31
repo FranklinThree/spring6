@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="user" class="com.github.franklinthree.myspring.bean.User">
+        <property name="name" value="Franklin"/>
+        <property name="age" value="18"/>
+    </bean>
+
+
+    <bean id="userService" class="com.github.franklinthree.myspring.service.UserService">
+        <property name="user" ref="user"/>
+    </bean>
+
+    <bean id="userDao" class="com.github.franklinthree.myspring.dao.UserDao">
+
+    </bean>
+
+</beans>
