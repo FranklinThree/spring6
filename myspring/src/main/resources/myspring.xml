@@ -6,11 +6,11 @@
     </bean>
 
 
-    <bean id="userService" class="com.github.franklinthree.myspring.service.UserService">
+    <bean id="userService" class="com.github.franklinthree.myspring.bean.UserService">
         <property name="user" ref="user"/>
     </bean>
 
-    <bean id="userDao" class="com.github.franklinthree.myspring.dao.UserDao">
+    <bean id="userDao" class="com.github.franklinthree.myspring.bean.UserDao">
 
     </bean>
 
