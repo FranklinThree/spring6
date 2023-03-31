@@ -13,6 +13,7 @@
         <module name="spring6-003-dependency-injection" />
         <module name="spring6-002-first" />
         <module name="spring6-006-bean-lifecycle" />
+        <module name="myspring" />
         <module name="spring6-005-bean-instantiation" />
         <module name="review-reflect" />
         <module name="spring6-001-revelation" />
