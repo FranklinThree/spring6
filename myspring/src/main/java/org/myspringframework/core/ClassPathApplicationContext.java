@@ -112,10 +112,27 @@ public class ClassPathApplicationContext implements ApplicationContext{
                             String setMethodName = "set" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
                             // 获取set方法
                             Method method = aClass.getDeclaredMethod(setMethodName, type);
+                            // 获取value或ref值
+                            String value = property.attributeValue("value");
+                            String ref = property.attributeValue("ref");
+                            if (value != null) {
+                                // 说明这个值是简单类型
+                                // 调用set方法
+                                method.invoke(singletonObjects.get(id), value);
+                            }
+                            if (ref != null) {
+                                // 说明这个值是非简单类型
+                                // 调用set方法
+                                method.invoke(singletonObjects.get(id), singletonObjects.get(ref));
+                            }
 
                         } catch (NoSuchFieldException e) {
                             throw new RuntimeException(e);
                         } catch (NoSuchMethodException e) {
+                            throw new RuntimeException(e);
+                        } catch (InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        } catch (IllegalAccessException e) {
                             throw new RuntimeException(e);
                         }
 
