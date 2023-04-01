@@ -7,7 +7,7 @@
 
 
     <bean id="userService" class="com.github.franklinthree.myspring.bean.UserService">
-        <property name="user" ref="user"/>
+        <property name="userDao" ref="userDao"/>
     </bean>
 
     <bean id="userDao" class="com.github.franklinthree.myspring.bean.UserDao">

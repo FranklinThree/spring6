@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,9 +85,49 @@ public class ClassPathApplicationContext implements ApplicationContext{
                 }
 
             });
+            // 再次重新吧所有的bean标签遍历一次，这次主要是给对象的属性赋值。
+            nodes.forEach(node -> {
+                try {
+                    Element beanElt = (Element) node;
+                    // 获取id
+                    String id = beanElt.attributeValue("id");
+                    // 获取className
+                    String className = beanElt.attributeValue("class");
+                    // 获取class对象
+                    Class<?> aClass = Class.forName(className);
+
+                    // 获取所有property标签
+                    List<Element> properties = beanElt.elements("property");
+                    // 遍历所有property标签
+                    properties.forEach(property -> {
+
+                        try {
+                            // 获取name属性
+                            String propertyName = property.attributeValue("name");
+                            // 获取属性类型
+                            Class<?> type = aClass.getDeclaredField(propertyName).getType();
+
+//                            logger.info("propertyName = " + propertyName);
+                            // 获取set方法名
+                            String setMethodName = "set" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
+                            // 获取set方法
+                            Method method = aClass.getDeclaredMethod(setMethodName, type);
+
+                        } catch (NoSuchFieldException e) {
+                            throw new RuntimeException(e);
+                        } catch (NoSuchMethodException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    });
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         } catch (DocumentException e) {
             e.printStackTrace();
         }
+
 
 
     }
