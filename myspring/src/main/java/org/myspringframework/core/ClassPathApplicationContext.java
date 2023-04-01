@@ -118,6 +118,44 @@ public class ClassPathApplicationContext implements ApplicationContext{
                             if (value != null) {
                                 // 说明这个值是简单类型
                                 // 调用set方法
+                                // 我们myspring框架声明：我们只支持这些类型为简单类型
+                                // byte short int long float double boolean char
+                                // Byte Short Integer Long Float Double Boolean Character
+                                // String
+                                // 获取属性类型名
+                                String typeName = type.getSimpleName();
+                                Object actualValue = null;
+                                switch (typeName){
+                                    case "Byte", "byte":
+                                        actualValue = Byte.parseByte(value);
+                                        break;
+                                    case "Short", "short":
+                                        actualValue = Short.parseShort(value);
+                                        break;
+                                    case "Integer", "int":
+                                        actualValue = Integer.parseInt(value);
+                                        break;
+                                    case "Long", "long":
+                                        actualValue = Long.parseLong(value);
+                                        break;
+                                    case "Float", "float":
+                                        actualValue = Float.parseFloat(value);
+                                        break;
+                                    case "Double", "double":
+                                        actualValue = Double.parseDouble(value);
+                                        break;
+                                    case "Boolean", "boolean":
+                                        actualValue = Boolean.parseBoolean(value);
+                                        break;
+                                    case "Character", "char":
+                                        actualValue = value.charAt(0);
+                                        break;
+                                    case "String":
+                                        actualValue = value;
+                                        break;
+                                    default:
+                                        throw new RuntimeException("不支持的类型：" + typeName);
+                                }
                                 method.invoke(singletonObjects.get(id), value);
                             }
                             if (ref != null) {
