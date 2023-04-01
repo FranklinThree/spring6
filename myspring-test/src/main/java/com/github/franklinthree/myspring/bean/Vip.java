@@ -1,23 +1,25 @@
 package com.github.franklinthree.myspring.bean;
 
 /**
- * 用户
+ * 贵宾
  *
  * @author FranklinThree
- * @date 2023/03/31
- * @className User
+ * @date 2023/04/02
+ * @className Vip
  * @see
  * @since 1.0.0
  */
-public class User {
+public class Vip {
     private String name;
     private int age;
+    private double height;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Vip{" +
                 "\n\t" + "name='" + name + '\'' +
                 ",\n\t" + "age=" + age +
+                ",\n\t" + "height=" + height +
                 '\n' + '}';
     }
 
@@ -35,5 +37,13 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 }

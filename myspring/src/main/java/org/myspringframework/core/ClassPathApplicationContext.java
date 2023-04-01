@@ -126,28 +126,52 @@ public class ClassPathApplicationContext implements ApplicationContext{
                                 String typeName = type.getSimpleName();
                                 Object actualValue = null;
                                 switch (typeName){
-                                    case "Byte", "byte":
+                                    case "byte":
                                         actualValue = Byte.parseByte(value);
                                         break;
-                                    case "Short", "short":
+                                    case "short":
                                         actualValue = Short.parseShort(value);
                                         break;
-                                    case "Integer", "int":
+                                    case "int":
                                         actualValue = Integer.parseInt(value);
                                         break;
-                                    case "Long", "long":
+                                    case "long":
                                         actualValue = Long.parseLong(value);
                                         break;
-                                    case "Float", "float":
+                                    case "float":
                                         actualValue = Float.parseFloat(value);
                                         break;
-                                    case "Double", "double":
+                                    case "double":
                                         actualValue = Double.parseDouble(value);
                                         break;
-                                    case "Boolean", "boolean":
+                                    case "boolean":
                                         actualValue = Boolean.parseBoolean(value);
                                         break;
-                                    case "Character", "char":
+                                    case "char":
+                                        actualValue = value.charAt(0);
+                                        break;
+                                    case "Byte":
+                                        actualValue = Byte.valueOf(value);
+                                        break;
+                                    case "Short":
+                                        actualValue = Short.valueOf(value);
+                                        break;
+                                    case "Integer":
+                                        actualValue = Integer.valueOf(value);
+                                        break;
+                                    case "Long":
+                                        actualValue = Long.valueOf(value);
+                                        break;
+                                    case "Float":
+                                        actualValue = Float.valueOf(value);
+                                        break;
+                                    case "Double":
+                                        actualValue = Double.valueOf(value);
+                                        break;
+                                    case "Boolean":
+                                        actualValue = Boolean.valueOf(value);
+                                        break;
+                                    case "Character":
                                         actualValue = value.charAt(0);
                                         break;
                                     case "String":
@@ -156,7 +180,7 @@ public class ClassPathApplicationContext implements ApplicationContext{
                                     default:
                                         throw new RuntimeException("不支持的类型：" + typeName);
                                 }
-                                method.invoke(singletonObjects.get(id), value);
+                                method.invoke(singletonObjects.get(id), actualValue);
                             }
                             if (ref != null) {
                                 // 说明这个值是非简单类型
