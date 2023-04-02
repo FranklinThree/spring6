@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--
+        第一种解决方案
+            use-default-filters="false"
+            关闭默认的过滤规则，带有声明Bean的注解全部失效
+-->
+<!--    <context:component-scan base-package="com.github.franklinthree.spring6.bean2" use-default-filters="false">-->
+<!--&lt;!&ndash;        只有@Repository被包含进来，生效。&ndash;&gt;-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+<!--    </context:component-scan>-->
+
+<!--
+        第二种解决方案
+            use-default-filters="true"
+            开启默认的过滤规则，带有声明Bean的注解全部生效
+-->
+    <context:component-scan base-package="com.github.franklinthree.spring6.bean2" use-default-filters="true">
+<!--        @Repository 注解失效-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+</beans>

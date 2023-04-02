@@ -19,6 +19,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since 1.0.0
  */
 public class IoCAnnotationTest {
+    @Test
+    public void testChoose(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-choose.xml");
+    }
 
     @Test
     public void testBeanComponent(){
