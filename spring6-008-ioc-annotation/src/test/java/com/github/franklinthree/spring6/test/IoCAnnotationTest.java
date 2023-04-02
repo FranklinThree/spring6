@@ -4,6 +4,7 @@ import com.github.franklinthree.spring6.bean.Order;
 import com.github.franklinthree.spring6.bean.Student;
 import com.github.franklinthree.spring6.bean.User;
 import com.github.franklinthree.spring6.bean.Vip;
+import com.github.franklinthree.spring6.dao.OrderDao;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,9 +28,12 @@ public class IoCAnnotationTest {
         Vip vipBean = applicationContext.getBean("vip", Vip.class);
         Order orderBean = applicationContext.getBean("order", Order.class);
         Student studentBean = applicationContext.getBean("student", Student.class);
-        System.out.println(userBean);
-        System.out.println(vipBean);
-        System.out.println(orderBean);
-        System.out.println(studentBean);
+//        System.out.println(userBean);
+//        System.out.println(vipBean);
+//        System.out.println(orderBean);
+//        System.out.println(studentBean);
+
+        OrderDao orderDao = applicationContext.getBean("orderDao", OrderDao.class);
+        System.out.println(orderDao);
     }
 }

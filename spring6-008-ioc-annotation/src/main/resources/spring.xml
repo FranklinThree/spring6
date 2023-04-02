@@ -5,6 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 <!--    给Spring框架指定到扫描那些包中的类-->
-    <context:component-scan base-package="com.github.franklinthree.spring6.bean"/>
+<!--    <context:component-scan base-package="com.github.franklinthree.spring6.bean"/>-->
 
+<!--    多个包，使用逗号隔开-->
+<!--    <context:component-scan base-package="com.github.franklinthree.spring6.bean,com.github.franklinthree.spring6.dao"/>-->
+
+<!--    多个包，也可以指定这多个包共同的父包，但是这肯定要牺牲部分效率-->
+        <context:component-scan base-package="com.github.franklinthree.spring6"/>
 </beans>
