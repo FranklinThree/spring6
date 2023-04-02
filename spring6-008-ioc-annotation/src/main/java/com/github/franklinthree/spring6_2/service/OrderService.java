@@ -23,9 +23,25 @@ public class OrderService {
 //    private OrderDao orderDao;
 
     // 如果想解决上面的问题，可以使用@Qualifier注解，这个注解可以根据名称byName，从Spring容器中找到对应的bean，然后注入到当前的属性中。
-    @Autowired
-    @Qualifier("orderDaoImplForOracle")
+//    @Autowired
+//    @Qualifier("orderDaoImplForOracle")
     private OrderDao orderDao;
+
+//    @Autowired
+//    public void setOrderDao(OrderDao orderDao) {
+//        this.orderDao = orderDao;
+//    }
+
+
+//    public OrderService(@Autowired OrderDao orderDao) {
+//        this.orderDao = orderDao;
+//    }
+
+
+    // 如果一个类当中只有一个构造方法，并且这个构造方法当中只有一个参数，那么这个参数上面的@Autowired注解可以省略。
+    public OrderService(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
 
     public void generate(){
         orderDao.insert();

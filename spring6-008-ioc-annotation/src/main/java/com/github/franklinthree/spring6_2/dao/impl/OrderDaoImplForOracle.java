@@ -3,7 +3,7 @@ package com.github.franklinthree.spring6_2.dao.impl;
 import com.github.franklinthree.spring6_2.dao.OrderDao;
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class OrderDaoImplForOracle implements OrderDao {
 
     @Override
