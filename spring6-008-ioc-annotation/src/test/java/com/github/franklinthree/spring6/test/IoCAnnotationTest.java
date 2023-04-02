@@ -6,6 +6,7 @@ import com.github.franklinthree.spring6.bean.User;
 import com.github.franklinthree.spring6.bean.Vip;
 import com.github.franklinthree.spring6.bean3.MyDataSource;
 import com.github.franklinthree.spring6.dao.OrderDao;
+import com.github.franklinthree.spring6_2.service.OrderService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,6 +21,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since 1.0.0
  */
 public class IoCAnnotationTest {
+
+    @Test
+    public void testAutowired(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autowired.xml");
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+        orderService.generate();
+
+    }
 
     @Test
     public void testDI(){
