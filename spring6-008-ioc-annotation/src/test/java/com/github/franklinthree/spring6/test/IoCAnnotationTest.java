@@ -4,6 +4,7 @@ import com.github.franklinthree.spring6.bean.Order;
 import com.github.franklinthree.spring6.bean.Student;
 import com.github.franklinthree.spring6.bean.User;
 import com.github.franklinthree.spring6.bean.Vip;
+import com.github.franklinthree.spring6.bean3.MyDataSource;
 import com.github.franklinthree.spring6.dao.OrderDao;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -19,6 +20,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since 1.0.0
  */
 public class IoCAnnotationTest {
+
+    @Test
+    public void testDI(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-di-annotation.xml");
+        MyDataSource myDataSource = applicationContext.getBean("myDataSource", MyDataSource.class);
+        System.out.println(myDataSource);
+
+        com.github.franklinthree.spring6.bean3.User user = applicationContext.getBean("user", com.github.franklinthree.spring6.bean3.User.class);
+        System.out.println(user);
+    }
     @Test
     public void testChoose(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-choose.xml");
