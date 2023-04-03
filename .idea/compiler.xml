@@ -15,6 +15,7 @@
         <module name="review-annotation" />
         <module name="factory-method" />
         <module name="myspring-test" />
+        <module name="spring-009-jdbc" />
         <module name="spring6-003-dependency-injection" />
         <module name="spring6-006-bean-lifecycle" />
         <module name="myspring" />
