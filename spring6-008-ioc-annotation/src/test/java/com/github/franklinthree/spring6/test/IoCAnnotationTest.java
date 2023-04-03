@@ -7,9 +7,14 @@ import com.github.franklinthree.spring6.bean.Vip;
 import com.github.franklinthree.spring6.bean3.MyDataSource;
 import com.github.franklinthree.spring6.dao.OrderDao;
 import com.github.franklinthree.spring6_2.service.OrderService;
+import com.github.franklinthree.spring6_3.Spring6Config;
+import com.github.franklinthree.spring6_3.service.StudentService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.lang.annotation.Annotation;
 
 /**
  * io cannotation测试
@@ -21,6 +26,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since 1.0.0
  */
 public class IoCAnnotationTest {
+    @Test
+    public void testNoXML(){
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Spring6Config.class);
+        StudentService studentService = annotationConfigApplicationContext.getBean("studentService", StudentService.class);
+        studentService.deleteStudent();
+    }
+
+    @Test
+    public void testResource(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-resource.xml");
+        StudentService studentService = applicationContext.getBean("studentService", StudentService.class);
+        studentService.deleteStudent();
+
+    }
+
 
     @Test
     public void testAutowired(){
