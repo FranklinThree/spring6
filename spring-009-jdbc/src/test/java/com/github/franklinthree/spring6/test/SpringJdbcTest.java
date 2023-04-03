@@ -7,6 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 /**
  * spring jdbc测试
  *
@@ -18,6 +20,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class SpringJdbcTest {
     private final JdbcTemplate jdbcTemplate;
+
     public SpringJdbcTest() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring6.xml");
         JdbcTemplate template = applicationContext.getBean("jdbcTemplate", JdbcTemplate.class);
@@ -26,7 +29,16 @@ public class SpringJdbcTest {
     }
 
     @Test
-    public void testSelectOne(){
+    public void testQueryAll(){
+        // select语句
+        String sql = "select id, real_name ,age from t_user";
+        // 注意：在JdbcTemplate中，只要是insert delete update都是用update方法。
+        List<User> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
+        System.out.println(query);
+    }
+
+    @Test
+    public void testQueryOne(){
         // select语句
         String sql = "select id, real_name ,age from t_user where id = ?";
         User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), 2);
