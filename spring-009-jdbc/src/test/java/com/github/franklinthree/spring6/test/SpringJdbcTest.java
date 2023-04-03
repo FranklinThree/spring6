@@ -4,9 +4,14 @@ import com.github.franklinthree.spring6.bean.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +33,31 @@ public class SpringJdbcTest {
         JdbcTemplate template = applicationContext.getBean("jdbcTemplate", JdbcTemplate.class);
         System.out.println(template);
         jdbcTemplate = template;
+    }
+    @Test
+    public void testCallBack(){
+        // 如果你想写jdbc代码，可以使用callback回调函数。
+        // 准备SQL语句
+        String sql = "select * from t_user where id = ?";
+        // 注册回调函数，当执行execute方法时，会调用回调函数的doInPreparedStatement方法
+        User user = jdbcTemplate.execute(sql, new PreparedStatementCallback<User>() {
+            User user = null;
+
+            @Override
+            public User doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                ps.setInt(1, 8);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String realName = rs.getString("real_name");
+                    int age = rs.getInt("age");
+                    user = new User(id, realName, age);
+                }
+                return user;
+            }
+        });
+        System.out.println(user);
+
     }
     @Test
     public void testBatchDelete(){
