@@ -1,8 +1,10 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.spring6.bean.User;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -21,6 +23,29 @@ public class SpringJdbcTest {
         JdbcTemplate template = applicationContext.getBean("jdbcTemplate", JdbcTemplate.class);
         System.out.println(template);
         jdbcTemplate = template;
+    }
+
+    @Test
+    public void testSelectOne(){
+        // select语句
+        String sql = "select id, real_name ,age from t_user where id = ?";
+        User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), 2);
+        System.out.println(user);
+    }
+    @Test
+    public void testDelete(){
+        // delete语句
+        String sql = "delete from t_user where id = ?";
+        int count = jdbcTemplate.update(sql, 4);
+        System.out.println(count);
+    }
+
+    @Test
+    public void testUpdate(){
+        // update语句
+        String sql = "update t_user set real_name = ?, age = ? where id = ?";
+        int count = jdbcTemplate.update(sql, "阿三索尔", 10, 4);
+        System.out.println(count);
     }
     @Test
     public void testInsert(){
