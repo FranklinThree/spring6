@@ -28,6 +28,15 @@ public class SpringJdbcTest {
         jdbcTemplate = template;
     }
 
+
+    @Test
+    public void testQueryOneValue(){
+        // select语句
+        String sql = "select count(*) from t_user";
+        // 注意：在JdbcTemplate中，只要是insert delete update都是用update方法。
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class);
+        System.out.println(count);
+    }
     @Test
     public void testQueryAll(){
         // select语句
