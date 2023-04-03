@@ -7,6 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -27,7 +29,16 @@ public class SpringJdbcTest {
         System.out.println(template);
         jdbcTemplate = template;
     }
-
+    @Test
+    public void testBatchInsert(){
+        // insert语句
+        String sql = "insert into t_user(real_name, age) values(?, ?)";
+        Object[][] objects = {{"小张三", 10}, {"小李四", 20}, {"小王五", 30}};
+        List<Object[]> list = Arrays.stream(objects).toList();
+        // 注意：在JdbcTemplate中，只要是insert delete update都是用update方法。
+        int[] count = jdbcTemplate.batchUpdate(sql, list);
+        System.out.println(Arrays.toString(count));
+    }
 
     @Test
     public void testQueryOneValue(){
