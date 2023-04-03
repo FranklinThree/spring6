@@ -6,7 +6,7 @@
 <!--    当然，也可以集成其他人或者其他组织开发的数据源，例如: c3p0 dbcp druid-->
     <bean id="myDataSource" class="com.github.franklinthree.spring6.bean.MyDataSource">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/spring6?serverTimezone=UTC"/>
+        <property name="url" value="jdbc:mysql://huawei.franklin3.top:3306/spring6?serverTimezone=UTC"/>
         <property name="username" value="franklin3"/>
         <property name="password" value="123456"/>
     </bean>
