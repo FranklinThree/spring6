@@ -30,6 +30,17 @@ public class SpringJdbcTest {
         jdbcTemplate = template;
     }
     @Test
+    public void testBatchUpdate(){
+        // update语句
+        String sql = "update t_user set real_name = ?,age = ? where id = ?";
+        Object[][] objects = {{"小张三", 10, 1}, {"小李四", 20, 2}, {"小王五", 30, 3}};
+        List<Object[]> list = Arrays.stream(objects).toList();
+        int[] count = jdbcTemplate.batchUpdate(sql, list);
+        System.out.println(Arrays.toString(count));
+
+
+    }
+    @Test
     public void testBatchInsert(){
         // insert语句
         String sql = "insert into t_user(real_name, age) values(?, ?)";
