@@ -30,6 +30,15 @@ public class SpringJdbcTest {
         jdbcTemplate = template;
     }
     @Test
+    public void testBatchDelete(){
+        // delete语句
+        String sql = "delete from t_user where id = ?";
+        Object[][] objects = {{1}, {2}, {3}};
+        List<Object[]> list = Arrays.stream(objects).toList();
+        int[] count = jdbcTemplate.batchUpdate(sql, list);
+        System.out.println(Arrays.toString(count));
+    }
+    @Test
     public void testBatchUpdate(){
         // update语句
         String sql = "update t_user set real_name = ?,age = ? where id = ?";
