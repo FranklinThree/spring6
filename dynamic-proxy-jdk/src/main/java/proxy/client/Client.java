@@ -4,6 +4,7 @@ package proxy.client;
 import proxy.service.OrderService;
 import proxy.service.OrderServiceImpl;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 public class Client {
@@ -21,16 +22,19 @@ public class Client {
         * 1.类加载器，ClassLoader loader：用于加载代理类的字节码class
         *       在内存当中生成的字节码也是class文件，要执行性也得先加载到内存中，所以需要类加载器
         * 2.目标对象实现的接口，Class<?>[] interfaces：用于指定代理类实现哪些接口
+        *       在内存中生成代理类的时候，这个代理类是需要你告诉他实现那些接口的。
         * 3.调用处理器，InvocationHandler h：用于指定代理类的方法调用时，需要执行的代码
+        *       InvocationHandler 被翻译为：调用处理器。是一个接口。
+        *       在调用处理器接口中编写的就是：增强代码
+        *       因为具体要增强什么代码，JDK动态代理技术它是猜不到的。没有那么神。
+        *       既然是接口，就要写接口的实现类。
+        *
+        *       可能会有疑问？
+        *           自己还要动手调用持利器接口的实现类这不会导致类爆炸吗？不会。
+        *           因为这种调用处理器写一次就好。
         *
         * */
-        Proxy.newProxyInstance(orderService.getClass().getClassLoader(), orderService.getClass().getInterfaces(), (proxy, method, args1) -> {
-            // 增强
-            long begin = System.currentTimeMillis();
-            Object invoke = method.invoke(orderService, args1);
-            long end = System.currentTimeMillis();
-            System.out.println("耗时：" + (end - begin) + "ms");
-            return invoke;
-        });
+;
+        Proxy.newProxyInstance(orderService.getClass().getClassLoader(), orderService.getClass().getInterfaces(), invocationHandler);
     }
 }
