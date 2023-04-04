@@ -22,6 +22,7 @@
         <module name="spring6-008-ioc-annotation" />
         <module name="review-reflect" />
         <module name="spring6-001-revelation" />
+        <module name="static-proxy" />
       </profile>
     </annotationProcessing>
   </component>
