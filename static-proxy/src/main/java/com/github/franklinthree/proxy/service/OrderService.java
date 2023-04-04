@@ -9,6 +9,8 @@ package com.github.franklinthree.proxy.service;
  * @see
  * @since 1.0.0
  */
+
+// 代理对象和目标对象的公共接口
 public interface OrderService {
 
     /**
