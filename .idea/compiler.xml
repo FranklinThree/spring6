@@ -24,6 +24,7 @@
         <module name="review-reflect" />
         <module name="spring6-001-revelation" />
         <module name="static-proxy" />
+        <module name="dynamic-proxy-cglib" />
       </profile>
     </annotationProcessing>
   </component>
