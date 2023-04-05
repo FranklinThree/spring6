@@ -36,7 +36,12 @@ public class Client {
         *
         * */
 ;
-        OrderService proxyOs = (OrderService)Proxy.newProxyInstance(orderService.getClass().getClassLoader(), orderService.getClass().getInterfaces(), new TimeInvocationHandler(orderService));
+
+//        OrderService proxyOs = (OrderService)Proxy.newProxyInstance(orderService.getClass().getClassLoader(), orderService.getClass().getInterfaces(), new TimeInvocationHandler(orderService));
+        // 上面的代码通过一个工具类的封装，就简洁了。
+        OrderService proxyOs = (OrderService)proxy.util.ProxyUtil.newProxyInstance(orderService);
+
+
         // 代理对象调用方法
         // 注意：调用代理对象的代理方法的时候，如果你要做增强的话，目标对象的目标方法得保证执行。
 //        proxyOs.detail();
