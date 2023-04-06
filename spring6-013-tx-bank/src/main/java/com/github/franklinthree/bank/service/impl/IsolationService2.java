@@ -22,13 +22,13 @@ public class IsolationService2 {
     @Resource
     private AccountDao accountDao;
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    @Transactional(isolation = Isolation.REPEATABLE_READ, timeout = 10) // 设置超时时间为10秒
     public void save(Account account){
         accountDao.insert(account);
         System.out.println("插入成功");
         // 睡眠一会
         try {
-            Thread.sleep(1000 * 30);
+            Thread.sleep(1000 * 20);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
