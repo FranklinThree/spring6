@@ -28,8 +28,9 @@ public class AccountServiceImpl2 implements AccountService{
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void save(Account account) {
+        int e = 1 / 0;
         accountDao.insert(account);
     }
 }
