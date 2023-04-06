@@ -2,6 +2,7 @@ package com.github.franklinthree.spring6.service;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect // 切面类是需要使用@Aspect注解标注的
+@Order(1)
 public class LogAspect {    // 切面
 
     // 切面 = 通知 + 切点
