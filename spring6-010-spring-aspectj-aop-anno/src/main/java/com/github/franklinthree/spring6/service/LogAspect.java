@@ -1,5 +1,6 @@
 package com.github.franklinthree.spring6.service;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
@@ -36,8 +37,15 @@ public class LogAspect {    // 切面
 
     // 前置通知
     @Before("pointcut()")
-    public void before(){
+    public void before(JoinPoint joinPoint){
         System.out.println("前置通知");
+        // 这个JoinPoint joinPoint，在Spring容器调用这个方法的时候会自动传过来。
+        // 我们可以直接用。用这个JoinPoint joinPoint干啥？
+        // Signature signature = joinPoint.getSignature();获取目标方法的签名
+        // 通过方法的签名，可以获取到一个方法的具体信息
+        // 获取目标方法的名字
+        System.out.println("目标方法名：" + joinPoint.getSignature().getName());
+
     }
     // 后置通知
     @AfterReturning("pointcut()")
