@@ -24,15 +24,18 @@ public class IsolationService2 {
     @Resource
     private AccountDao accountDao;
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, rollbackFor = RuntimeException.class) // 只要发生RuntimeException异常，就回滚
+//    @Transactional(isolation = Isolation.REPEATABLE_READ, rollbackFor = RuntimeException.class) // 只要发生RuntimeException异常，就回滚
+    @Transactional(noRollbackFor = NullPointerException.class) // 发生NullPointerException异常，不回滚
     public void save(Account account) throws IOException {
         accountDao.insert(account);
 
         // 模拟运行时异常
 //        int e = 1 / 0;
+        String s = null;
+        s.toString();
 
         // 模拟IO异常
-        throw new IOException();
+//        throw new IOException();
 
 
 
