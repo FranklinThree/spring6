@@ -7,6 +7,7 @@ import com.github.franklinthree.bank.service.impl.IsolationService2;
 import jakarta.annotation.Resource;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.support.CallbackPreferringPlatformTransactionManager;
 
@@ -22,6 +23,13 @@ import java.io.IOException;
  * @since 1.0.0
  */
 public class SpringTxTest {
+
+    @Test
+    public void testNoXML(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("com.github.franklinthree.bank");
+        AccountService accountService = applicationContext.getBean("accountService", AccountService.class);
+        accountService.transfer("act-001", "act-002", 100.0);
+    }
     @Test
     public void testIsolation1(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
