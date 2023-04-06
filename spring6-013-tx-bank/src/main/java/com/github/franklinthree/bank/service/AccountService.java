@@ -1,5 +1,7 @@
 package com.github.franklinthree.bank.service;
 
+import org.springframework.stereotype.Service;
+
 /**
  * 帐户服务
  * 事务就是在这个接口下控制的。
@@ -10,6 +12,7 @@ package com.github.franklinthree.bank.service;
  * @see
  * @since 1.0.0
  */
+//@Service
 public interface AccountService {
     /**
      * 转账

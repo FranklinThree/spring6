@@ -1,5 +1,7 @@
 package com.github.franklinthree.bank.pojo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 账户
  *
@@ -9,6 +11,7 @@ package com.github.franklinthree.bank.pojo;
  * @see
  * @since 1.0.0
  */
+@Component
 public class Account {
     private String actno;
     private Double balance;

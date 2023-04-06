@@ -1,6 +1,8 @@
 package com.github.franklinthree.bank.dao;
 
 import com.github.franklinthree.bank.pojo.Account;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Repository;
 
 /**
  * 账户Dao
@@ -11,6 +13,7 @@ import com.github.franklinthree.bank.pojo.Account;
  * @see
  * @since 1.0.0
  */
+//@Repository
 public interface AccountDao {
     /**
      * 根据账号查询账户信息
