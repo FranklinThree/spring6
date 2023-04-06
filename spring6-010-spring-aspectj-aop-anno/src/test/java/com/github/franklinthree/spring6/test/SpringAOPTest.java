@@ -19,9 +19,9 @@ public class SpringAOPTest {
     @Test
     public void testBefore(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        UserService userService = applicationContext.getBean("userService", UserService.class);
-        userService.login();
-        userService.logout();
+//        UserService userService = applicationContext.getBean("userService", UserService.class);
+//        userService.login();
+//        userService.logout();
 
         OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
         orderService.generate();
