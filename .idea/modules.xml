@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring6-010-spring-aspectj-aop-anno.iml" filepath="$PROJECT_DIR$/spring6-010-spring-aspectj-aop-anno.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring6-011-spring-aspectj-aop-xml.iml" filepath="$PROJECT_DIR$/spring6-011-spring-aspectj-aop-xml.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring6-013-tx-bank.iml" filepath="$PROJECT_DIR$/spring6-013-tx-bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring6-014-tx-bank-xml.iml" filepath="$PROJECT_DIR$/spring6-014-tx-bank-xml.iml" />
     </modules>
   </component>
 </project>
