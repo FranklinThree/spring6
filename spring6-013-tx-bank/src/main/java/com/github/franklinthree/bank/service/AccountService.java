@@ -1,5 +1,6 @@
 package com.github.franklinthree.bank.service;
 
+import com.github.franklinthree.bank.pojo.Account;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,4 +23,11 @@ public interface AccountService {
      * @param money    转账金额
      */
     void transfer(String outActno, String inActno, Double money);
+
+    /**
+     * 保存账户信息
+     *
+     * @param account 账户
+     */
+    void save(Account account);
 }

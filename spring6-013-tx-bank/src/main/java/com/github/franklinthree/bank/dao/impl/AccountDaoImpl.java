@@ -15,14 +15,18 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public Account selectByActno(String actno) {
         String sql = "select actno, balance from t_act where actno = ?";
-        Account account = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Account.class), actno);
-        return account;
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Account.class), actno);
     }
 
     @Override
     public int update(Account account) {
         String sql = "update t_act set balance = ? where actno = ?";
-        int count = jdbcTemplate.update(sql, account.getBalance(), account.getActno());
-        return count;
+        return jdbcTemplate.update(sql, account.getBalance(), account.getActno());
+    }
+
+    @Override
+    public int insert(Account account) {
+        String sql = "insert into t_act(actno, balance) values(?, ?)";
+        return jdbcTemplate.update(sql, account.getActno(), account.getBalance());
     }
 }

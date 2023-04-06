@@ -5,6 +5,7 @@ import com.github.franklinthree.bank.pojo.Account;
 import com.github.franklinthree.bank.service.AccountService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -65,4 +66,19 @@ public class AccountServiceImpl implements AccountService {
         // 4.如果执行业务流程过程中有异常，回滚事务
 
     }
+
+    @Resource(name = "accountService2")
+    private AccountService accountService;
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void save(Account account) {
+        // 这里调用dao的insert方法。
+        accountDao.insert(account);
+        // 这里调用accountService2的save方法
+        // 创建账户对象
+        Account account2 = new Account("act-004", 1000.0);
+        accountService.save(account2);
+    }
+
 }

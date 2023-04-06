@@ -23,10 +23,17 @@ public interface AccountDao {
     Account selectByActno(String actno);
 
     /**
-     * 更新
+     * 更新账户信息
      *
      * @param account 账户
      * @return int
      */
     int update(Account account);
+
+    /**
+     * 保存账户信息
+     * @param account
+     * @return
+     */
+    int insert(Account account);
 }
