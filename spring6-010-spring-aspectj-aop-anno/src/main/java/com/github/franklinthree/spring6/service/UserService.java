@@ -16,4 +16,9 @@ public class UserService { // 目标类型
     public void login(){ // 目标方法
         System.out.println("用户登录");
     }
+
+    public boolean logout(){
+        System.out.println("用户退出");
+        return true;
+    }
 }

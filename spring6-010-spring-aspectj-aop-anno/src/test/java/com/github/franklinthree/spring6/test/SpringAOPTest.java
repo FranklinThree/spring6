@@ -1,5 +1,6 @@
 package com.github.franklinthree.spring6.test;
 
+import com.github.franklinthree.spring6.service.OrderService;
 import com.github.franklinthree.spring6.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -20,5 +21,9 @@ public class SpringAOPTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
         UserService userService = applicationContext.getBean("userService", UserService.class);
         userService.login();
+        userService.logout();
+
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+        orderService.generate();
     }
 }
