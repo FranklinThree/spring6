@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+
 /**
  * 安全方面
  *
@@ -22,13 +23,13 @@ public class SecurityAspect { // 安全切面
 
     // 通知 + 切点
     // 前置通知
-    @Before("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @Before("com.github.franklinthree.spring6.service.LogAspect.pointcut()")
     public void before(){
         System.out.println("安全：前置通知");
     }
 
     // 后置通知
-    @AfterReturning("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @AfterReturning("com.github.franklinthree.spring6.service.LogAspect.pointcut()")
     public void afterReturning(){
         System.out.println("安全：后置通知");
     }

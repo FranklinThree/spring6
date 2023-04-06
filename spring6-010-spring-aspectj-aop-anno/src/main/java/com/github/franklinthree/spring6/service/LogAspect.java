@@ -28,18 +28,24 @@ public class LogAspect {    // 切面
 //        System.out.println("我是一段增强代码");
 //    }
 
+    // 定义通用的切点表达式
+    @Pointcut("execution(* com.github.franklinthree.spring6.service..*(..))")
+    public void pointcut(){
+        // 这个方法只是一个标记，方法名随意，方法体中也不需要写任何代码
+    }
+
     // 前置通知
-    @Before("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @Before("pointcut()")
     public void before(){
         System.out.println("前置通知");
     }
     // 后置通知
-    @AfterReturning("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @AfterReturning("pointcut()")
     public void afterReturning(){
         System.out.println("后置通知");
     }
     // 环绕通知（环绕是最大的通知，在前置通知之前，在后置通知之后。）
-    @Around("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @Around("pointcut()")
     public void around(ProceedingJoinPoint joinPoint) throws Throwable{
         // 前面的代码
         System.out.println("前环绕");
@@ -49,12 +55,12 @@ public class LogAspect {    // 切面
         System.out.println("后环绕");
     }
     // 异常通知
-    @AfterThrowing("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @AfterThrowing("pointcut()")
     public void afterThrowing(){
         System.out.println("异常通知");
     }
     // 最终通知（finally语句块中的通知）
-    @After("execution(* com.github.franklinthree.spring6.service..*(..))")
+    @After("pointcut()")
     public void after(){
         System.out.println("最终通知");
     }
