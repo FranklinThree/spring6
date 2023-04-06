@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+
 /**
  * 负责插入
  *
@@ -22,16 +24,24 @@ public class IsolationService2 {
     @Resource
     private AccountDao accountDao;
 
-    @Transactional(isolation = Isolation.REPEATABLE_READ, timeout = 10) // 设置超时时间为10秒
-    public void save(Account account){
+    @Transactional(isolation = Isolation.REPEATABLE_READ, rollbackFor = RuntimeException.class) // 只要发生RuntimeException异常，就回滚
+    public void save(Account account) throws IOException {
         accountDao.insert(account);
-        System.out.println("插入成功");
-        // 睡眠一会
-        try {
-            Thread.sleep(1000 * 20);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+        // 模拟运行时异常
+//        int e = 1 / 0;
+
+        // 模拟IO异常
+        throw new IOException();
+
+
+
+//        // 睡眠一会
+//        try {
+//            Thread.sleep(1000 * 20);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
 

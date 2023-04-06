@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.support.CallbackPreferringPlatformTransactionManager;
 
+import java.io.IOException;
+
 /**
  * 春天tx测试
  *
@@ -28,7 +30,7 @@ public class SpringTxTest {
     }
 
     @Test
-    public void testIsolation2(){
+    public void testIsolation2() throws IOException {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
         IsolationService2 i2 = applicationContext.getBean("i2", IsolationService2.class);
         Account account = new Account("act-010",60404.0);
