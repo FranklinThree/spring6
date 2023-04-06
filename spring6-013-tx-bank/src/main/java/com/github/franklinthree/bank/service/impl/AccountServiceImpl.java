@@ -77,12 +77,12 @@ public class AccountServiceImpl implements AccountService {
         accountDao.insert(account);
         // 这里调用accountService2的save方法
         // 创建账户对象
-//        try{
+        try{
             Account account2 = new Account("act-004", 1000.0);
             accountService.save(account2);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
