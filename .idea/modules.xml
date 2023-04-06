@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring6.iml" filepath="$PROJECT_DIR$/spring6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring6-010-spring-aspectj-aop-anno.iml" filepath="$PROJECT_DIR$/spring6-010-spring-aspectj-aop-anno.iml" />
     </modules>
   </component>
 </project>
