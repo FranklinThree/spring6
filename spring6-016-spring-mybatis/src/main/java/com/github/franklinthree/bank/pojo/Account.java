@@ -29,4 +29,19 @@ public class Account {
                 '\n' + '}';
     }
 
+    public String getActno() {
+        return actno;
+    }
+
+    public void setActno(String actno) {
+        this.actno = actno;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 }
