@@ -53,7 +53,7 @@ public class AccountServiceImpl implements AccountService {
         Account outAct = accountMapper.selectByActno(outActno);
         Account inAct = accountMapper.selectByActno(inActno);
         // 如果余额不足则抛出异常
-        if (getByActno(outActno).getBalance() < money) {
+        if (outAct.getBalance() < money) {
             throw new RuntimeException("余额不足");
         }
         // 如果转出账户和转入账户相同则抛出异常
